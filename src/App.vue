@@ -35,7 +35,7 @@ myIndexedDB2.setItem('pageIndex', {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/waterfall">waterfall</RouterLink>
+        <RouterLink to="/tailwind">tailwind</RouterLink>
       </nav>
     </div>
   </header>

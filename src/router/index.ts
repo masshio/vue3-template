@@ -18,9 +18,9 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/waterfall',
-      name: 'waterfall',
-      component: () => import('../views/waterfall/WaterFall.vue')
+      path: '/tailwind',
+      name: 'tailwind',
+      component: () => import('../views/tailwind/tailwind.vue')
     },
   ]
 })
