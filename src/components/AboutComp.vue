@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, inject, useAttrs, useSlots } from 'vue';
+import type { PropType } from 'vue'
 // 接口
 interface Book {
   title: string,
@@ -9,7 +10,6 @@ const nums = ref<number | undefined>(23)
 const book: Book = reactive({
   title: '1367'
 })
-console.log("🚀 ~ file: AboutComp.vue:12 ~ inject('book'):", inject<string>('book'))
 
 // 暴露属性
 defineExpose({
@@ -22,9 +22,11 @@ const props = defineProps({
     required: true,
     default: '123'
   },
+  info: {
+    type: Object as PropType<Book>
+  },
   bar: Number
 })
-console.log("🚀 ~ file: AboutComp.vue:27 ~ props:", props)
 
 const emit = defineEmits<{
   (e: 'change', id: number): void
@@ -37,8 +39,6 @@ const slot = defineSlots<{
   default(props: {msg: string}): any
 }>()
 
-console.log("🚀 ~ file: AboutComp.vue:40 ~ useAttrs():", useAttrs())
-console.log("🚀 ~ file: AboutComp.vue:40 ~ useSlots():", useSlots())
 
 
 </script>
