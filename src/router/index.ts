@@ -22,6 +22,21 @@ const router = createRouter({
       name: 'tailwind',
       component: () => import('../views/tailwind/tailwind.vue')
     },
+    {
+      path: '/gsap',
+      name: 'gsap',
+      component: () => import('../views/gsap/index.vue')
+    },
+    {
+      path: '/gsap/screen',
+      name: 'gsapScreen',
+      component: () => import('../views/gsap/screen.vue')
+    },
+    {
+      path: '/gsap/timeline',
+      name: 'timeline',
+      component: () => import('../views/gsap/timeline.vue')
+    },
   ]
 })
 

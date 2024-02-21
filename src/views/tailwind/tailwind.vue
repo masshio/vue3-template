@@ -1,6 +1,9 @@
 <script setup lang="ts">
 function handleClick() {
   import.meta.hot?.send('my:from-client', {msg: 'hello'})
+  fetch('/api/myRequest').then(res => res.text()).then(res => {
+    console.log(res);
+  })
 }
 import.meta.hot?.on('connection', (msg) => {
   console.log(msg);
@@ -12,10 +15,10 @@ import.meta.hot?.on('my:ack', (msg) => {
 
 <template>
   <div class="wrapper my-3 shadow-lg">
-    <div class="flex justify-start text-base/[20px] box-border h-10 pl-2 py-1 hover:text-xl/7 odd:bg-slate-100 even:bg-slate-300 first-child:bg-sky-700"
+    <div class="flex justify-start text-base/[20px] box-border cursor-pointer h-10 pl-2 py-1 hover:text-red-600 odd:bg-slate-100 even:bg-slate-300 first-child:bg-sky-700"
       v-for="item in 6" :key="item">
       <div class="basis-20 text-center text-gray-500">123{{ item }}</div>
-      <div class="basis-20 text-right">456</div>
+      <div class="basis-20 text-right font-bold">456</div>
     </div>
     <button class="bg-sky-500 hover:bg-sky-700 active:text-slate-950 text-zinc-50 rounded-3xl px-2 py-1 m-2" @click="handleClick">
       Save changes

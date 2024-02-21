@@ -13,24 +13,38 @@ console.log(fileURLToPath(new URL('./src', import.meta.url))); // D:\work\vue3-t
 export default defineConfig((config) => {
   console.log("🚀 ~ file: vite.config.ts:11 ~ defineConfig ~ command, mode:", config)
   return {
-    // base: '/repo',
+    base: '/repo',
+    publicDir: 'public',
     plugins: [
       vue(),
       {
         ...legacy({
           targets: ['default']
         }),
-        enforce: 'pre',
-        apply: 'build'
+        enforce: 'pre', // https://cn.vitejs.dev/guide/using-plugins.html#enforcing-plugin-ordering
+        apply: 'build' // https://cn.vitejs.dev/guide/using-plugins.html#conditional-application
       },
       myPlugin(),
-      socket(),
+      {
+        ...socket(),
+        apply: 'serve'
+      },
       visualizer() as PluginOption
     ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
+    },
+    build: {
+      outDir: 'myDist',
+      assetsDir: 'admin',
+    },
+    server: {
+      host: 'localhost',
+      port: 5173,
+      open: true,
+      cors: true,
     }
   }
 })

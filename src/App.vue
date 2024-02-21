@@ -23,11 +23,18 @@ const myIndexedDB2 = localforage.createInstance({
 myIndexedDB2.setItem('pageIndex', {
   page: 10
 })
+
+import.meta.hot?.on('fileUpdate', ({timestamp, file}) => {
+  const time = new Date(timestamp)
+  const hour = time.getHours()
+  const minute = time.getMinutes()
+  console.log(`更新时间：${hour}:${minute}, 更新文件：${file}`);
+})
 </script>
 
 <template>
-  <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+  <!-- <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -36,9 +43,11 @@ myIndexedDB2.setItem('pageIndex', {
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/tailwind">tailwind</RouterLink>
+        <RouterLink to="/gsap">gsap</RouterLink>
+        <RouterLink to="/gsap/screen">滚动屏</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>
