@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -36,6 +36,11 @@ const router = createRouter({
       path: '/gsap/timeline',
       name: 'timeline',
       component: () => import('../views/gsap/timeline.vue')
+    },
+    {
+      path: '/cancelToken',
+      name: 'cancelToken',
+      component: () => import('../views/cancelToken.vue')
     },
   ]
 })
